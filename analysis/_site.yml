@@ -1,7 +1,7 @@
-name: "RuiProject"
+name: RuiProject
 output_dir: ../docs
 navbar:
-  title: "RuiProject"
+  title: RuiProject
   left:
   - text: Home
     href: index.html
@@ -9,6 +9,10 @@ navbar:
     href: about.html
   - text: License
     href: license.html
+  right:
+  - icon: fa-github
+    text: Source code
+    href: https://github.com/RuiDongDR/RuiProject
 output:
   workflowr::wflow_html:
     toc: yes
