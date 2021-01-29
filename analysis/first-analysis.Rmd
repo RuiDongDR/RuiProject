@@ -1,0 +1,54 @@
+---
+title: "first-analysis"
+author: "RuiDongDR"
+date: "2021-01-28"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Introduction
+#date: 20210110
+#require R package readr, dplyr
+```{r}
+setwd("/Users/serenadong/files_Rui/Don/Project 1 - AD/20210110 starting data set")
+getwd()
+list.files()
+#"combinedUKB_120320_43978_subsetFeature.csv"  
+library(readr)
+data <- read_csv("combinedUKB_120320_43978_subsetFeature.csv")
+data[1] # this is the first column of data (eid)
+library(dplyr)
+```
+## Test 1: basic statistics ------------------------------------------------
+
+There are 501,000 entries, 169 variables
+```{r}
+samplenum<-501000 #real:501,000
+variablenum<-169
+head(data,n=10) #check the first 10 samples
+data[1,2]#No.1 sample, the 2nd variable
+#501000 entries
+```
+
+## Test 2: missing rate ----------------------------------------------------
+
+Result: take about 1-2 minutes for each variable.
+time: 2021-1-12 13:36~16:28
+about 61.07 seconds for each variable
+```{r}
+is.na(data[1,14])
+timestart<-Sys.time()
+missingnum<-vector()
+for (i in c(1:10)) {
+  missingnum[i]<-0
+  for (j in c(1:10)) {
+    if (is.na(data[j,i])) {
+      missingnum[i]<-missingnum[i]+1
+      }
+  }
+}
+timeend<-Sys.time()
+h<-hist(missingnum, breaks=30)
+text(h$mids,h$counts,labels=h$counts, adj=c(0.5, -0.5),cex=0.6)
+```

@@ -1,0 +1,17 @@
+---
+title: "second-analysis"
+author: "RuiDongDR"
+date: "2021-01-29"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Introduction
+This is the second test file within second-analysis.Rmd.
+**Yay!**
+```{r}
+samplenum<-501000 #real:501,000
+variablenum<-169
+```
+
